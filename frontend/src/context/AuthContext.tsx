@@ -27,11 +27,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isDemoMode, setIsDemoMode] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+<<<<<<< HEAD
   const initAuth = async () => => {
+=======
+  const initAuth = async () => {
+>>>>>>> 8e5f7472ecce640abeea7adc7958e2521e11d583
     setIsLoading(true);
     try {
       let storedToken = localStorage.getItem('ev_token');
       if (!storedToken) {
+<<<<<<< HEAD
 -        try {
 -          const data = await api.login('demo@evsmarttrace.com', 'DemoPassword123!');
 -          if (data && data.access_token) {
@@ -51,6 +56,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 -        }
 +        // No token and not logged in – user stays unauthenticated.
 +        // The "Try Demo" button on the login page can be used to obtain a demo token.
+=======
+        try {
+          const data = await api.login('demo@evsmarttrace.com', 'DemoPassword123!');
+          if (data && data.access_token) {
+            localStorage.setItem('ev_token', data.access_token);
+            storedToken = data.access_token;
+            setToken(data.access_token);
+            setUser({ id: data.user_id, name: data.name, email: data.email });
+          }
+        } catch {
+          // If network is offline, set simulated fallback profile
+          setUser({
+            id: 1,
+            name: 'Alex Rivers',
+            email: 'demo@evsmarttrace.com',
+            created_at: new Date().toISOString()
+          });
+        }
+>>>>>>> 8e5f7472ecce640abeea7adc7958e2521e11d583
       } else {
         setToken(storedToken);
         try {

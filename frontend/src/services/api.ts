@@ -6,8 +6,12 @@ import {
   DashboardStats, NotificationItem 
 } from '../types';
 
+<<<<<<< HEAD
 const API_BASE_URL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '';
 // No fallback – VITE_API_URL must be set in production.
+=======
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+>>>>>>> 8e5f7472ecce640abeea7adc7958e2521e11d583
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
