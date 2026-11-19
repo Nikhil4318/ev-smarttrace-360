@@ -1,0 +1,510 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --transition-speed: 0.45s;
+  }
+
+  /* 0. MONOCHROME NOIR THEME (Pure High-Contrast Black & White EV Cockpit) */
+  html.theme-monochrome body {
+    background-color: #030303;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.08) 0px, transparent 45%),
+      radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.06) 0px, transparent 40%),
+      radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.04) 0px, transparent 55%),
+      radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+      linear-gradient(180deg, #020202 0%, #0a0a0a 100%);
+    background-size: auto, auto, auto, 24px 24px, 100% 100%;
+    background-attachment: fixed;
+    color: #ffffff;
+  }
+
+  /* 0. CERAMIC AERO WHITE THEME (Lucid Luxury Smart EV White) */
+  html.theme-ceramic body {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.09) 0px, transparent 48%),
+      radial-gradient(at 100% 10%, rgba(5, 150, 105, 0.08) 0px, transparent 45%),
+      radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.06) 0px, transparent 55%),
+      radial-gradient(rgba(148, 163, 184, 0.28) 1.2px, transparent 1.2px),
+      linear-gradient(180deg, #f8fafc 0%, #edf2f7 50%, #e2e8f0 100%);
+    background-size: auto, auto, auto, 28px 28px, 100% 100%;
+    background-attachment: fixed;
+    color: #0f172a;
+  }
+
+  /* 1. AURORA ELECTRIC THEME (Default) */
+  html.theme-aurora body {
+    background-color: #050814;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(0, 255, 157, 0.12) 0px, transparent 48%),
+      radial-gradient(at 100% 15%, rgba(139, 92, 246, 0.16) 0px, transparent 52%),
+      radial-gradient(at 50% 100%, rgba(0, 240, 255, 0.10) 0px, transparent 65%),
+      linear-gradient(180deg, #050814 0%, #080f24 100%);
+    background-attachment: fixed;
+    background-size: 150% 150%;
+    animation: auroraDrift 18s ease-in-out infinite alternate;
+  }
+
+  /* 2. CYBER OBSIDIAN THEME */
+  html.theme-cyber body {
+    background-color: #07090e;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(0, 255, 135, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(0, 229, 255, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.9) 0px, transparent 55%),
+      linear-gradient(180deg, #07090e 0%, #0d131f 100%);
+    background-attachment: fixed;
+  }
+
+  /* 3. SOLARIS KINETIC THEME */
+  html.theme-solaris body {
+    background-color: #0a0a0f;
+    background-image: 
+      radial-gradient(at 5% 5%, rgba(245, 158, 11, 0.14) 0px, transparent 45%),
+      radial-gradient(at 95% 10%, rgba(249, 115, 22, 0.12) 0px, transparent 45%),
+      radial-gradient(at 50% 100%, rgba(56, 189, 248, 0.09) 0px, transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #15111b 100%);
+    background-attachment: fixed;
+  }
+
+  /* 4. QUANTUM NEBULA THEME */
+  html.theme-quantum body {
+    background-color: #080514;
+    background-image: 
+      radial-gradient(at 5% 5%, rgba(192, 132, 252, 0.16) 0px, transparent 50%),
+      radial-gradient(at 95% 20%, rgba(59, 130, 246, 0.14) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(244, 114, 182, 0.11) 0px, transparent 60%),
+      linear-gradient(180deg, #080514 0%, #130a24 100%);
+    background-attachment: fixed;
+  }
+
+  body {
+    @apply text-slate-100 min-h-screen font-sans;
+    transition: background-color var(--transition-speed) ease, background-image var(--transition-speed) ease;
+  }
+}
+
+/* Aurora Motion Background Animation */
+@keyframes auroraDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Dynamic Glassmorphic Panels per Theme */
+.glass-panel {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.theme-monochrome .glass-panel {
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.08) inset;
+  color: #ffffff;
+}
+
+html.theme-monochrome .glass-panel-glow {
+  background: rgba(16, 16, 16, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.12), 0 0 10px rgba(255, 255, 255, 0.06);
+}
+
+html.theme-ceramic .glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+  color: #0f172a;
+}
+
+html.theme-ceramic .glass-panel-glow {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(2, 132, 199, 0.4);
+  box-shadow: 0 12px 35px -5px rgba(2, 132, 199, 0.12), 0 0 0 1px rgba(2, 132, 199, 0.2);
+}
+
+html.theme-aurora .glass-panel {
+  background: rgba(8, 14, 32, 0.72);
+  border: 1px solid rgba(0, 255, 157, 0.14);
+  box-shadow: 0 4px 25px rgba(0, 255, 157, 0.03);
+}
+
+html.theme-aurora .glass-panel-glow {
+  background: rgba(8, 14, 32, 0.85);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 157, 0.08), 0 0 15px rgba(139, 92, 246, 0.06);
+}
+
+html.theme-cyber .glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.theme-cyber .glass-panel-glow {
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(0, 255, 135, 0.25);
+  box-shadow: 0 0 25px rgba(0, 255, 135, 0.06);
+}
+
+html.theme-solaris .glass-panel {
+  background: rgba(22, 18, 12, 0.75);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+  box-shadow: 0 4px 25px rgba(245, 158, 11, 0.03);
+}
+
+html.theme-solaris .glass-panel-glow {
+  background: rgba(26, 20, 12, 0.88);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.08);
+}
+
+html.theme-quantum .glass-panel {
+  background: rgba(18, 11, 34, 0.75);
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  box-shadow: 0 4px 25px rgba(192, 132, 252, 0.04);
+}
+
+html.theme-quantum .glass-panel-glow {
+  background: rgba(22, 13, 42, 0.88);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  box-shadow: 0 0 30px rgba(192, 132, 252, 0.10);
+}
+
+/* Card Hover Elevation */
+.glass-card-hover {
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-3px) scale(1.005);
+}
+
+html.theme-monochrome .glass-card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.12), 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+html.theme-ceramic .glass-card-hover:hover {
+  border-color: rgba(2, 132, 199, 0.5);
+  box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+html.theme-aurora .glass-card-hover:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 10px 35px rgba(0, 240, 255, 0.12), 0 0 15px rgba(0, 255, 157, 0.1);
+}
+
+html.theme-cyber .glass-card-hover:hover {
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+}
+
+html.theme-solaris .glass-card-hover:hover {
+  border-color: rgba(251, 191, 36, 0.45);
+  box-shadow: 0 10px 35px rgba(245, 158, 11, 0.12);
+}
+
+html.theme-quantum .glass-card-hover:hover {
+  border-color: rgba(192, 132, 252, 0.45);
+  box-shadow: 0 10px 35px rgba(192, 132, 252, 0.14);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(5, 8, 20, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff9d;
+}
+
+/* Leaflet Map Overrides */
+.leaflet-container {
+  background-color: #050814 !important;
+  font-family: inherit;
+}
+.map-theme-cyber .leaflet-tile {
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.35) !important;
+}
+.map-theme-satellite .leaflet-tile {
+  filter: brightness(0.96) contrast(1.08) saturate(1.15) !important;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #0a1128 !important;
+  color: #f8fafc !important;
+  border: 1px solid #1e293b !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important;
+}
+
+/* ==========================================================================
+   CERAMIC AERO WHITE THEME ADAPTATIONS (Luxury Smart EV White Cockpit)
+   ========================================================================== */
+html.theme-ceramic {
+  color-scheme: light;
+}
+
+html.theme-ceramic body {
+  color: #0f172a;
+}
+
+/* Text Hierarchy */
+html.theme-ceramic h1,
+html.theme-ceramic h2,
+html.theme-ceramic h3,
+html.theme-ceramic h4,
+html.theme-ceramic .text-white {
+  color: #0f172a !important;
+}
+
+html.theme-ceramic .text-slate-100,
+html.theme-ceramic .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.theme-ceramic .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.theme-ceramic .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.theme-ceramic .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Dark Card & Button Adaptations to Frosted Ceramic White */
+html.theme-ceramic .bg-slate-900,
+html.theme-ceramic .bg-slate-950,
+html.theme-ceramic .bg-\[\#080c14\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+html.theme-ceramic .bg-slate-900\/80,
+html.theme-ceramic .bg-slate-900\/60,
+html.theme-ceramic .bg-slate-900\/70 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.theme-ceramic .bg-slate-800,
+html.theme-ceramic .bg-slate-800\/50,
+html.theme-ceramic .bg-slate-800\/80,
+html.theme-ceramic .bg-slate-800\/40 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+html.theme-ceramic .border-slate-800,
+html.theme-ceramic .border-slate-700,
+html.theme-ceramic .border-slate-800\/80,
+html.theme-ceramic .border-slate-700\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Luminous Daylight Brand Accents */
+html.theme-ceramic .text-cyan-400 {
+  color: #0284c7 !important;
+}
+
+html.theme-ceramic .text-emerald-400 {
+  color: #059669 !important;
+}
+
+html.theme-ceramic .text-amber-400 {
+  color: #d97706 !important;
+}
+
+html.theme-ceramic .text-purple-400,
+html.theme-ceramic .text-violet-400 {
+  color: #7c3aed !important;
+}
+
+/* Form Controls & Inputs */
+html.theme-ceramic input,
+html.theme-ceramic select,
+html.theme-ceramic textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.theme-ceramic input::placeholder,
+html.theme-ceramic textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Scrollbars for Ceramic Theme */
+html.theme-ceramic ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.theme-ceramic ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+html.theme-ceramic ::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* Map Popups for Ceramic Theme */
+html.theme-ceramic .leaflet-container {
+  background-color: #f8fafc !important;
+}
+html.theme-ceramic .leaflet-popup-content-wrapper, 
+html.theme-ceramic .leaflet-popup-tip {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1) !important;
+}
+
+/* ==========================================================================
+   MONOCHROME NOIR THEME ADAPTATIONS (Pure Black & White Minimalist Cockpit)
+   ========================================================================== */
+html.theme-monochrome {
+  color-scheme: dark;
+}
+
+html.theme-monochrome body {
+  background-color: #030303 !important;
+  color: #ffffff !important;
+}
+
+/* Monochrome High-Contrast Buttons */
+html.theme-monochrome .bg-gradient-to-r.from-emerald-500.to-cyan-500 {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25) !important;
+}
+html.theme-monochrome .bg-gradient-to-r.from-emerald-500.to-cyan-500:hover {
+  background: #e2e8f0 !important;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Monochromatic Brand Accents */
+html.theme-monochrome .text-cyan-400,
+html.theme-monochrome .text-emerald-400,
+html.theme-monochrome .text-amber-400,
+html.theme-monochrome .text-purple-400,
+html.theme-monochrome .text-violet-400,
+html.theme-monochrome .text-rose-400,
+html.theme-monochrome .text-blue-400 {
+  color: #ffffff !important;
+}
+
+html.theme-monochrome .text-slate-400 {
+  color: #a1a1aa !important;
+}
+
+html.theme-monochrome .text-slate-300 {
+  color: #e4e4e7 !important;
+}
+
+/* Monochromatic Badges & Pills */
+html.theme-monochrome .bg-emerald-500\/10,
+html.theme-monochrome .bg-cyan-500\/10,
+html.theme-monochrome .bg-amber-500\/10,
+html.theme-monochrome .bg-purple-500\/10,
+html.theme-monochrome .bg-rose-500\/20,
+html.theme-monochrome .bg-rose-500\/10 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html.theme-monochrome .border-emerald-500\/30,
+html.theme-monochrome .border-cyan-500\/30,
+html.theme-monochrome .border-emerald-500\/20,
+html.theme-monochrome .border-cyan-500\/20 {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Pure Black Glass Panels */
+html.theme-monochrome .bg-slate-900,
+html.theme-monochrome .bg-slate-950,
+html.theme-monochrome .bg-\[\#080c14\] {
+  background-color: #080808 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+html.theme-monochrome .bg-slate-800,
+html.theme-monochrome .bg-slate-800\/50,
+html.theme-monochrome .bg-slate-800\/80 {
+  background-color: #121212 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+html.theme-monochrome input,
+html.theme-monochrome select,
+html.theme-monochrome textarea {
+  background-color: #0c0c0c !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Monochromatic Vector Background Grayscale Desaturation */
+html.theme-monochrome .bg-no-repeat.bg-center.bg-cover {
+  filter: grayscale(100%) brightness(1.3) contrast(1.2) !important;
+}
+
+/* High-Contrast Noir Satellite / Street Cartography */
+html.theme-monochrome .leaflet-tile {
+  filter: grayscale(100%) contrast(1.35) brightness(0.85) invert(1) !important;
+}
+
+html.theme-monochrome .leaflet-popup-content-wrapper, 
+html.theme-monochrome .leaflet-popup-tip {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Monochromatic Scrollbars */
+html.theme-monochrome ::-webkit-scrollbar-track {
+  background: #050505;
+}
+html.theme-monochrome ::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+}
+html.theme-monochrome ::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}

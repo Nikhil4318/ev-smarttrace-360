@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <radialGradient id="voiceGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.18"/>
+      <stop offset="40%" stop-color="#00f0ff" stop-opacity="0.10"/>
+      <stop offset="80%" stop-color="#ec4899" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#050814" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#voiceGlow)"/>
+
+  <!-- Siri-Style Circular Acoustic Waveform Rings -->
+  <g transform="translate(960, 520)" opacity="0.45">
+    <circle r="380" stroke="#c084fc" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle r="310" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="12 6"/>
+    <circle r="240" stroke="#ec4899" stroke-width="2" stroke-dasharray="24 12"/>
+    <circle r="170" stroke="#a855f7" stroke-width="2.5"/>
+    <circle r="100" stroke="#00f0ff" stroke-width="3"/>
+    
+    <!-- Concentric Speech Frequency Nodes -->
+    <path d="M-360,0 C-240,-120 -120,120 0,0 C120,-120 240,120 360,0" stroke="#c084fc" stroke-width="2.5" fill="none"/>
+    <path d="M-360,0 C-240,140 -120,-140 0,0 C120,140 240,-140 360,0" stroke="#00f0ff" stroke-width="2" fill="none"/>
+    <path d="M-280,0 C-180,-80 -90,80 0,0 C90,-80 180,80 280,0" stroke="#ec4899" stroke-width="2.2" stroke-dasharray="8 4" fill="none"/>
+
+    <!-- Voice Pulse Particles -->
+    <circle cx="0" cy="-170" r="5" fill="#00f0ff"/>
+    <circle cx="170" cy="0" r="5" fill="#c084fc"/>
+    <circle cx="0" cy="170" r="5" fill="#ec4899"/>
+    <circle cx="-170" cy="0" r="5" fill="#00f0ff"/>
+  </g>
+</svg>

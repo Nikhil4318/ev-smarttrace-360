@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <linearGradient id="navRibbon" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#00ff9d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.1"/>
+    </linearGradient>
+    <radialGradient id="navGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#00ff9d" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#050814" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#navGlow)"/>
+
+  <!-- Glowing Curving Highway Expressway Ribbon -->
+  <path d="M-100,880 C400,880 600,600 960,540 C1320,480 1500,280 2020,180" stroke="url(#navRibbon)" stroke-width="45" stroke-linecap="round" fill="none"/>
+  <path d="M-100,880 C400,880 600,600 960,540 C1320,480 1500,280 2020,180" stroke="#050814" stroke-width="35" stroke-linecap="round" fill="none"/>
+  <!-- Highway Center Dashed Guide Line -->
+  <path d="M-100,880 C400,880 600,600 960,540 C1320,480 1500,280 2020,180" stroke="#00f0ff" stroke-width="2.5" stroke-dasharray="24 16" fill="none"/>
+
+  <!-- Topographic Elevation Contour Curves -->
+  <g opacity="0.2" stroke="#00ff9d" stroke-width="1.2">
+    <path d="M100,200 C400,120 800,280 1200,160 C1600,60 1800,220 2000,180" fill="none"/>
+    <path d="M80,260 C380,180 780,340 1180,220 C1580,120 1780,280 1980,240" fill="none"/>
+    <path d="M60,320 C360,240 760,400 1160,280 C1560,180 1760,340 1960,300" fill="none"/>
+  </g>
+
+  <!-- GPS Waypoint Target Markers & Compass Rose -->
+  <g transform="translate(1600, 240)" opacity="0.35" stroke="#00f0ff">
+    <circle r="75" stroke-width="1.2" stroke-dasharray="4 6"/>
+    <circle r="55" stroke-width="1.5"/>
+    <line x1="-90" y1="0" x2="90" y2="0" stroke-width="1"/>
+    <line x1="0" y1="-90" x2="0" y2="90" stroke-width="1"/>
+    <polygon points="0,-48 8,-20 0,-30 -8,-20" fill="#00ff9d"/>
+  </g>
+</svg>

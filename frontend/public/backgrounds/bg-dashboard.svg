@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <linearGradient id="dbStream1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#00ff9d" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="dbGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#00ff9d" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#050814" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#dbGlow)"/>
+  
+  <!-- Aerodynamic Streamlines (Wind-tunnel velocity curves) -->
+  <path d="M-50,220 C350,220 750,160 1150,280 C1550,400 1850,340 2000,340" stroke="url(#dbStream1)" stroke-width="2.5" fill="none"/>
+  <path d="M-50,300 C300,300 700,220 1100,360 C1500,500 1800,440 2000,440" stroke="url(#dbStream1)" stroke-width="1.8" stroke-dasharray="12 6" fill="none"/>
+  <path d="M-50,380 C250,380 650,280 1050,440 C1450,600 1750,540 2000,540" stroke="url(#dbStream1)" stroke-width="2.0" fill="none"/>
+  <path d="M-50,460 C200,460 600,340 1000,520 C1400,700 1700,640 2000,640" stroke="url(#dbStream1)" stroke-width="1.2" stroke-dasharray="6 6" fill="none"/>
+  
+  <!-- Center HUD Instrument Cluster Gauges -->
+  <g transform="translate(960, 480)" opacity="0.4">
+    <circle r="360" stroke="#00f0ff" stroke-width="1" stroke-dasharray="6 8"/>
+    <circle r="290" stroke="#00ff9d" stroke-width="2" stroke-dasharray="16 8"/>
+    <circle r="220" stroke="#8b5cf6" stroke-width="1.2"/>
+    <circle r="150" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="4 4"/>
+    <path d="M-380,0 L380,0" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="4 6"/>
+    <path d="M0,-380 L0,380" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="4 6"/>
+    <!-- Velocity arcs -->
+    <path d="M-260,150 A 300 300 0 1 1 260 150" stroke="#00ff9d" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Target crosshairs -->
+    <circle cx="-290" cy="0" r="8" stroke="#00ff9d" stroke-width="1.5"/>
+    <circle cx="290" cy="0" r="8" stroke="#00ff9d" stroke-width="1.5"/>
+    <circle cx="0" cy="-290" r="8" stroke="#00f0ff" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Perspective Floor Grid (Automotive CAD grid) -->
+  <g opacity="0.2" stroke="#00f0ff" stroke-width="0.8">
+    <line x1="960" y1="500" x2="100" y2="1080"/>
+    <line x1="960" y1="500" x2="400" y2="1080"/>
+    <line x1="960" y1="500" x2="700" y2="1080"/>
+    <line x1="960" y1="500" x2="1220" y2="1080"/>
+    <line x1="960" y1="500" x2="1520" y2="1080"/>
+    <line x1="960" y1="500" x2="1820" y2="1080"/>
+    <!-- Iso grid bars -->
+    <line x1="300" y1="750" x2="1620" y2="750"/>
+    <line x1="200" y1="880" x2="1720" y2="880"/>
+    <line x1="100" y1="1020" x2="1820" y2="1020"/>
+  </g>
+</svg>
