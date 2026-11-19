@@ -27,28 +27,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isDemoMode, setIsDemoMode] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const initAuth = async () => {
+  const initAuth = async () => => {
     setIsLoading(true);
     try {
       let storedToken = localStorage.getItem('ev_token');
       if (!storedToken) {
-        try {
-          const data = await api.login('demo@evsmarttrace.com', 'DemoPassword123!');
-          if (data && data.access_token) {
-            localStorage.setItem('ev_token', data.access_token);
-            storedToken = data.access_token;
-            setToken(data.access_token);
-            setUser({ id: data.user_id, name: data.name, email: data.email });
-          }
-        } catch {
-          // If network is offline, set simulated fallback profile
-          setUser({
-            id: 1,
-            name: 'Alex Rivers',
-            email: 'demo@evsmarttrace.com',
-            created_at: new Date().toISOString()
-          });
-        }
+-        try {
+-          const data = await api.login('demo@evsmarttrace.com', 'DemoPassword123!');
+-          if (data && data.access_token) {
+-            localStorage.setItem('ev_token', data.access_token);
+-            storedToken = data.access_token;
+-            setToken(data.access_token);
+-            setUser({ id: data.user_id, name: data.name, email: data.email });
+-          }
+-        } catch {
+-          // If network is offline, set simulated fallback profile
+-          setUser({
+-            id: 1,
+-            name: 'Alex Rivers',
+-            email: 'demo@evsmarttrace.com',
+-            created_at: new Date().toISOString()
+-          });
+-        }
++        // No token and not logged in – user stays unauthenticated.
++        // The "Try Demo" button on the login page can be used to obtain a demo token.
       } else {
         setToken(storedToken);
         try {
